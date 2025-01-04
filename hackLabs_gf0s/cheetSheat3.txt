@@ -1,0 +1,20 @@
+# En este ejercicio nos piden que persigamos el rastro de un ciberDelincuente llamado Tochama
+
+# Para empezar solo nos dan un QR el cual decodificaremos desde: 
+https://zxing.org/w/decode.jspx
+
+# El resultado nos enviara a una supuesta targeta de embarque donde aparece al informacion de ha donde se
+# dirige tochama.
+# Como en el billete la informacion esta mal analizamos los metadatos de la imagen en la pagina: 
+https://metashieldclean-up.tu.com/
+
+# Desde aqui veremos la latitud y la longitud de donde a salido la imagen que mediante un mapa veremos que 
+# queda mas o menos en la india.
+# Como nos indica el ejercicio añadimos india al final de la url "http://labs.gf0s.com/india"
+
+# En esta pagina tendremos que analizar el HTML, JS en el cual aparece la contraseña que no se porque
+# ni como deducir que de toda la linea larga la pwd es 2657.
+
+# Con esto entraremos en la zona restringida la cual nos da acceso a un mega con un fichero .pdad
+# que si abrimos con NetworkMiner nos dira que tiene una imagen la cual es la clave del ejercicio.
+

